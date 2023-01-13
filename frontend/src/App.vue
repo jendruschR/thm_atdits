@@ -5,8 +5,10 @@ import ApiService from "@/service/apiService.js";
 var message = ref("");
 
 const handleClick = () => {
+  console.log(window.location.hostname);
   console.log(message.value);
   ApiService.sendMessage(message.value);
+  console.log("Message sent!");
 };
 </script>
 
