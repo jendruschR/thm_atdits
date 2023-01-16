@@ -115,7 +115,8 @@ After that you need to save and restart the SSH service. You can restart the ssh
 ---
 ### SCP
 Because we need to copy files to the VM we need to run scp.
-It is best to zip the folders you want to copy. After you zipped to folders you can copy them to the VM with scp. You can do that by running  `scp -P 187 -i <Path to the private key> <Path to zip file> root@<Ip of the VM>:<Path to the folder you want to copy the zip file to>`  
+It is best to zip the folders you want to copy. After you zipped to folders you can copy them to the VM with scp. You can do that by running  
+`scp -P 187 -i <Path to the private key> <Path to zip file> root@<Ip of the VM>:<Path to the folder you want to copy the zip file to>`  
 You need to enter the passphrase for the private key.
 
 ---
