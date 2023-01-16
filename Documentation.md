@@ -1,4 +1,26 @@
-# Documentation for the TryHackMe room for the university course ATdITS Security. 
+# Documentation
+
+This is the documentation for the TryHackMe room [AtDits](https://tryhackme.com/jr/atdits). It contains all the information about the VM, the backend and the frontend.
+
+
+- [Documentation](#documentation)
+  - [VM](#vm)
+    - [Base Image](#base-image)
+    - [Virtualbox](#virtualbox)
+    - [SSH](#ssh)
+      - [SSH Setup](#ssh-setup)
+      - [SSH Port Forwarding](#ssh-port-forwarding)
+      - [SSH Key](#ssh-key)
+      - [SSH Key Login](#ssh-key-login)
+    - [SCP](#scp)
+    - [PM2](#pm2)
+      - [PM2 Setup](#pm2-setup)
+      - [PM2 Backend](#pm2-backend)
+      - [PM2 Frontend](#pm2-frontend)
+      - [PM2 Service](#pm2-service)
+  - [Backend](#backend)
+  - [Frontend](#frontend)
+
 
 ## VM
 ### <ins>Base Image</ins>
@@ -41,7 +63,7 @@ After that you need to save and restart the SSH service. You can restart the ssh
 **Note** After you have restarted the ssh service you can't login with the password through ssh anymore. You can only login with the private key.
 
 ---
-### <ins>SCP</ins>
+### SCP
 Because we need to copy files to the VM we need to run scp.
 It is best to zip the folders you want to copy. After you zipped to folders you can copy them to the VM with scp. You can do that by running `scp -P 187 -i <Path to the private key> <Path to zip file> root@<Ip of the VM>:<Path to the folder you want to copy the zip file to>`.  
 You need to enter the passphrase for the private key.
