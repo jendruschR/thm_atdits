@@ -77,14 +77,16 @@ For the VM we used a Ubuntu Server 20.04 Image. We chose Ubuntu over Windows bec
 We used Virtualbox to run and configure the VM. The setup is pretty straight forward. You choose a name for the VM, the image, the credentials for the root user, the amount of memory and disk space you want to allocate to the VM, and you're done.  
 After the VM is created you can start it and create a new normal user. We chose the username `paul` for the user.
 
-After that it is best to update the VM. You can do that by running `sudo apt update && sudo apt upgrade -y`.
+After that it is best to update the VM. You can do that by running  
+`sudo apt update && sudo apt upgrade -y`.
 
 ---
 ### <ins>SSH</ins>
 Because we want to connect to the VM with SSH we need to configure SSH.
 
 #### <ins>SSH Setup</ins>
-To enable SSH on the VM you need to install the `openssh-server` package. You can do that by running `sudo apt install openssh-server`. After that you need to change the port from `22` to `187`. You can do that by editing the `/etc/ssh/sshd_config` file. You need to change the line `Port 22` to `Port 187`. We also wanted, that you can only connect to the VM with the user `root` and not with the user `paul`. Therefore we added the line `DenyUser paul` to the file. Another thing we changed, was the line `PermitRootLogin prohibit-password` to `PermitRootLogin yes`.  
+To enable SSH on the VM you need to install the `openssh-server` package. You can do that by running `sudo apt install openssh-server`. After that you need to change the port from `22` to `187`. You can do that by editing the `/etc/ssh/sshd_config` file. You need to change the line `Port 22` to `Port 187`. We also wanted, that you can only connect to the VM with the user `root` and not with the user `paul`. Therefore we added the line `DenyUser paul` to the file. Another thing we changed, was the line `PermitRootLogin prohibit-password` to  
+`PermitRootLogin yes`.  
 
 After that you need to save and restart the SSH service. You can restart the ssh by running `sudo systemctl restart ssh`.
 
@@ -98,7 +100,9 @@ To connect to the VM with SSH you need to create a port forwarding rule in Virtu
 Also we want to allow connect to the VM only with the private key.
 Therefore we need to create a new SSH key pair. You can do that by running `ssh-keygen -t rsa -b 4096 -f id_rsa`. You can choose the name you want for the key pair. We chose `id_rsa`. Also you can choose the passphrase you want for the private key. We chose `felix1`.  
 
-After that you need to copy the public key to the VM. You can do that by running `ssh-copy-id -p 187 -i <Path to private key> root@<Ip of the VM>` and enter the password for the root user.
+After that you need to copy the public key to the VM. You can do that by running  
+`ssh-copy-id -p 187 -i <Path to private key> root@<Ip of the VM>`   
+and  enter the password for the root user.
 
 
 #### <ins>SSH Key Login</ins>
@@ -111,7 +115,8 @@ After that you need to save and restart the SSH service. You can restart the ssh
 ---
 ### SCP
 Because we need to copy files to the VM we need to run scp.
-It is best to zip the folders you want to copy. After you zipped to folders you can copy them to the VM with scp. You can do that by running `scp -P 187 -i <Path to the private key> <Path to zip file> root@<Ip of the VM>:<Path to the folder you want to copy the zip file to>`.  
+It is best to zip the folders you want to copy. After you zipped to folders you can copy them to the VM with scp. You can do that by running  
+`scp -P 187 -i <Path to the private key> <Path to zip file> root@<Ip of the VM>:<Path to the folder you want to copy the zip file to>`  
 You need to enter the passphrase for the private key.
 
 ---
@@ -132,7 +137,8 @@ To run the backend with PM2 you need to run `pm2 start index.js --name backend`.
 #### <ins>PM2 Frontend</ins>
 To run the frontend with PM2 you need to change the directory to the frontend directory. You can do that by running `cd /home/paul/frontend`.
 After that run `npm install` to install all the dependencies.
-To run the frontend it is important to first build the frontend. You can do that by running `npm run build`. After that you can run the frontend with PM2 by running `pm2 server /dist/ --name frontend --spa`. This starts the frontend with PM2 and names it `frontend`.
+To run the frontend it is important to first build the frontend. You can do that by running `npm run build`. After that you can run the frontend with PM2 by running  
+`pm2 server /dist/ --name frontend --spa`. This starts the frontend with PM2 and names it `frontend`.
 
 #### <ins>PM2 Service</ins>
 To start the backend and the frontend automatically when the VM is started we need to create a systemd service. You can run `pm2 startup systemd` to create the service. After that you need you will get a command. You need to run that command. After that you can save the current PM2 configuration by running `pm2 save`.
